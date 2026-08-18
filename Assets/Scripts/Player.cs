@@ -1,14 +1,68 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     private float speed = 5f;
+    private bool dash = true;
+    private float dashDuration = 0.15f;
+    private float dashCooldown = 1f;
+    private float dashCooldownTimer = 0f;
+    private float dashTimer = 0f;
 
     public void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        Vector2 movement = new Vector2(horizontal, vertical).normalized;
+        Vector2 movement = new Vector2(horizontal, vertical);
+        if (horizontal != 0 && vertical != 0)
+        {
+            movement = new Vector2(horizontal, vertical).normalized;
+        }
         transform.Translate(movement * speed * Time.deltaTime);
+        Debug.Log($"Speed: {speed}, Dash: {dash}, DashCooldownTimer: {dashCooldownTimer}, DashTimer: {dashTimer}");
+
+        if (dash == false)
+        {
+            
+            if (dashCooldownTimer >= dashCooldown)
+            {
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    dash = true;
+                }
+            }
+        }
     }
+
+    public void FixedUpdate()
+    {
+        Dash();
+    }
+
+    public void Dash()
+    {
+        if (dash == true)
+        {
+            
+            dashCooldownTimer = 0f;
+            speed = 20f;
+
+            dashTimer += Time.fixedDeltaTime;
+
+            if (dashTimer >= dashDuration)
+            {
+                dash = false;
+                dashTimer = 0f;
+                speed = 5f;
+            }
+        }
+        else
+        {
+            dashCooldownTimer += Time.fixedDeltaTime;
+        }
+
+    }
+
+
 }
