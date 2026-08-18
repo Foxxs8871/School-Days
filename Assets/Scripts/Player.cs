@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    private float speed = 5f;
+    public float speed = 5f;
     private bool dash = true;
     private float dashDuration = 0.15f;
     private float dashCooldown = 1f;
@@ -20,7 +20,6 @@ public class Player : MonoBehaviour
             movement = new Vector2(horizontal, vertical).normalized;
         }
         transform.Translate(movement * speed * Time.deltaTime);
-        Debug.Log($"Speed: {speed}, Dash: {dash}, DashCooldownTimer: {dashCooldownTimer}, DashTimer: {dashTimer}");
 
         if (dash == false)
         {
