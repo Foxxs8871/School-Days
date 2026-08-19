@@ -16,10 +16,10 @@ public class Dialogos : MonoBehaviour
         player = FindAnyObjectByType<Player>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
+        {   
             
             Debug.Log("Player entrou na área de diálogo do NPC " + npcNumber);
             if (Input.GetKey(KeyCode.E))
@@ -43,6 +43,12 @@ public class Dialogos : MonoBehaviour
 
                 }
             }
+            
         }
+        else
+        {
+            playerInRange = false;
+        }
+
     }
 }

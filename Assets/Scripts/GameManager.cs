@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         }
         if (dialogos.playerInRange == true)
         {
-            if (Input.GetKeyDown(KeyCode.C))
+            if (Input.GetKey(KeyCode.C))
             {
                 player.transform.position = new Vector3(30, 17, 0);
                 text.gameObject.SetActive(false);
