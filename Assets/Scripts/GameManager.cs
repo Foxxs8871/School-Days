@@ -18,22 +18,20 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        
+        if (gameObject == dialogos.Npc3 && Input.GetKeyDown(KeyCode.C))
+        {
+            player.transform.position = new Vector3(36, 17, 0);
+            player.speed = 5f;
+            text.gameObject.SetActive(false);
+        }
         if (Input.GetKey(KeyCode.Q))
         {
             text.gameObject.SetActive(false);
             player.speed = 5f;
         }
-        if (dialogos.playerInRange == true)
-        {
-            if (Input.GetKey(KeyCode.C))
-            {
-                player.transform.position = new Vector3(30, 17, 0);
-                text.gameObject.SetActive(false);
-                player.speed = 5f;
-            }
-        }
-    }
 
+    }
     public void dialogo(string texto)
     {
         player.speed = 0f;

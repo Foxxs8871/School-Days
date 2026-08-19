@@ -9,6 +9,11 @@ public class Dialogos : MonoBehaviour
     public GameManager gameManager;
     private Player player;
     public bool playerInRange = false;
+    public GameObject Npc1;
+    public GameObject Npc2;
+    public GameObject Npc3;
+    public GameObject Npc4;
+    public string dialogo = "Placeholder";
 
     public void Start()
     {
@@ -18,37 +23,31 @@ public class Dialogos : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        Debug.Log("TRIGGER DETECTADO: " + collision.gameObject.name);
         if (collision.gameObject.CompareTag("Player"))
-        {   
-            
-            Debug.Log("Player entrou na área de diálogo do NPC " + npcNumber);
-            if (Input.GetKey(KeyCode.E))
+        {
+            playerInRange = true;
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                if (npcNumber == 1)
+                if (gameObject == Npc1)
                 {
-                    gameManager.dialogo("Dialogo do npc 1");
+                    gameManager.dialogo(dialogo);
                 }
-                else if (npcNumber == 2)
+                else if (gameObject == Npc2)
                 {
-                    gameManager.dialogo("Dialogo do npc 2");
+                    gameManager.dialogo(dialogo);
                 }
-                else if (npcNumber == 3)
+                else if (gameObject == Npc3)
                 {
-                    gameManager.dialogo("bora brigar la no parquinho meno");
-                    playerInRange = true;
+                    gameManager.dialogo(dialogo);
                 }
-                else if (npcNumber == 4)
+                else if (gameObject == Npc4)
                 {
-                    gameManager.dialogo("Dialogo do npc 4");
-
+                    gameManager.dialogo(dialogo);
                 }
             }
-            
-        }
-        else
-        {
-            playerInRange = false;
-        }
 
+
+        }
     }
 }
