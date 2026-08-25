@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         {
             
             dashCooldownTimer = 0f;
-            speed = 20f;
+            speed = 30f;
 
             dashTimer += Time.fixedDeltaTime;
 
