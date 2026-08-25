@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     public float speed = 5f;
     private bool dash = true;
     private float dashDuration = 0.15f;
-    private float dashCooldown = 1f;
+    private float dashCooldown = 0.5f;
     private float dashCooldownTimer = 0f;
     private float dashTimer = 0f;
 
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
         {
             
             dashCooldownTimer = 0f;
-            speed = 20f;
+            speed = 30f;
 
             dashTimer += Time.fixedDeltaTime;
 
