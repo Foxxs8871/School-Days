@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Npc1
+  - MuroDaEscola
+  - FrenteDaEscola
+  - EsquerdaDaEscola
+  - DireitaDaEscola
   layers:
   - Default
   - TransparentFX

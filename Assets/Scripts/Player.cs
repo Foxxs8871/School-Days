@@ -9,16 +9,22 @@ public class Player : MonoBehaviour
     private float dashCooldown = 0.5f;
     private float dashCooldownTimer = 0f;
     private float dashTimer = 0f;
+    public MainCamera Camera;
 
+    void Start()
+    {
+        speed = 5f;
+        Camera = FindAnyObjectByType<MainCamera>();
+    }
     public void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        Vector2 movement = new Vector2(horizontal, vertical);
-        if (horizontal != 0 && vertical != 0)
-        {
-            movement = new Vector2(horizontal, vertical).normalized;
-        }
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector2 movement = new Vector2(horizontal, vertical).normalized;
+        // if (horizontal != 0 && vertical != 0)
+        // {
+        //     movement = new Vector2(horizontal, vertical).normalized;
+        // }
         transform.Translate(movement * speed * Time.deltaTime);
 
         if (dash == false)
@@ -61,6 +67,25 @@ public class Player : MonoBehaviour
             dashCooldownTimer += Time.fixedDeltaTime;
         }
 
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("FrenteDaEscola"))
+        {
+            Camera.posicaoCamera("escola");
+        }
+        if (collision.gameObject.CompareTag("MuroDaEscola"))
+        {
+            Camera.posicaoCamera("rua");
+        }
+        if (collision.gameObject.CompareTag("DireitaDaEscola"))
+        {
+            Camera.posicaoCamera("parquinho");
+        }
+        if (collision.gameObject.CompareTag("EsquerdaDaEscola"))
+        {
+            Camera.posicaoCamera("galpao");
+        }
     }
 
 
