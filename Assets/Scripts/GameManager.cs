@@ -7,27 +7,35 @@ public class GameManager : MonoBehaviour
 {
     private Player player;
     public TextMeshProUGUI text;
-    private Dialogos dialogos;
+    public GameObject CaixaDeTexto;
+    public Dialogos dialogoNPC3;
+    Dialogos dialogos;
 
-    private void Start()
+    public void Start()
     {
         player = FindAnyObjectByType<Player>();
         text.gameObject.SetActive(false);
-        dialogos = FindAnyObjectByType<Dialogos>();
+        CaixaDeTexto.SetActive(false);
     }
 
-    private void Update()
+    public void Update()
     {
         
-        if (gameObject == dialogos.Npc3 && Input.GetKeyDown(KeyCode.C))
+    if (dialogoNPC3.playerInRangeNpc3)
+    {
+        Debug.Log("Player is in range of NPC3");
+        if (Input.GetKey(KeyCode.C))
         {
             player.transform.position = new Vector3(36, 17, 0);
             player.speed = 5f;
             text.gameObject.SetActive(false);
+            CaixaDeTexto.SetActive(false);
         }
-        if (Input.GetKey(KeyCode.Q))
+    }
+    if (Input.GetKey(KeyCode.Q))
         {
             text.gameObject.SetActive(false);
+            CaixaDeTexto.SetActive(false);
             player.speed = 5f;
         }
 
@@ -36,6 +44,7 @@ public class GameManager : MonoBehaviour
     {
         player.speed = 0f;
         text.gameObject.SetActive(true);
+        CaixaDeTexto.SetActive(true);
         text.text = texto;
     }
 }
