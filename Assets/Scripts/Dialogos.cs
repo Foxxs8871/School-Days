@@ -27,6 +27,8 @@ public class Dialogos : MonoBehaviour
         {
             gameManager.dialogo(dialogo);
         }
+
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
