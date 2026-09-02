@@ -5,7 +5,8 @@ using UnityEngine;
 public class Moveset20zoar : MonoBehaviour
 {
 
-    public TorreBinaria torre;
+    public TorreCreator torre;
+    public joinhacreator joinha;
 
     
     private List<int> sequenciaAtaques = new List<int>();
@@ -49,13 +50,11 @@ public class Moveset20zoar : MonoBehaviour
     {
         sequenciaAtaques.Clear();
 
-        
         sequenciaAtaques.Add(1);
         sequenciaAtaques.Add(2);
         sequenciaAtaques.Add(3);
         sequenciaAtaques.Add(4);
 
-        
         for (int i = sequenciaAtaques.Count - 1; i > 0; i--)
         {
             int indiceAleatorio = Random.Range(0, i + 1);
@@ -65,7 +64,6 @@ public class Moveset20zoar : MonoBehaviour
             sequenciaAtaques[indiceAleatorio] = temp;
         }
 
-        
         ataqueAtual = 0;
 
         Debug.Log("Nova sequência: " + sequenciaAtaques[0] + " " + sequenciaAtaques[1] + " " + sequenciaAtaques[2] + " " + sequenciaAtaques[3]);
@@ -82,6 +80,7 @@ public class Moveset20zoar : MonoBehaviour
 
             case 2:
                 Debug.Log("Executando Ataque 2");
+                joinha.joinhas();
                 break;
 
             case 3:
