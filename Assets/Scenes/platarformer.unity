@@ -649,6 +649,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &892374813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 892374815}
+  - component: {fileID: 892374814}
+  m_Layer: 0
+  m_Name: joinhacreator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &892374814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892374813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd3523c333ec23048a71b0214e4c473f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joinha: {fileID: 7880087484389804338, guid: cf4dbcb7aca92e34cbc63155d7474e10, type: 3}
+--- !u!4 &892374815
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892374813}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8, y: 5, z: -9.930368}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1096123820
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,7 +835,7 @@ GameObject:
   - component: {fileID: 1164266469}
   - component: {fileID: 1164266470}
   m_Layer: 0
-  m_Name: torre
+  m_Name: torrecreator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -985,6 +1030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   torre: {fileID: 1164266470}
+  joinha: {fileID: 892374814}
 --- !u!4 &1803971607
 Transform:
   m_ObjectHideFlags: 0
@@ -1015,7 +1061,7 @@ GameObject:
   - component: {fileID: 1888193522}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1210,3 +1256,4 @@ SceneRoots:
   - {fileID: 1888193521}
   - {fileID: 1917180398}
   - {fileID: 1803971607}
+  - {fileID: 892374815}
