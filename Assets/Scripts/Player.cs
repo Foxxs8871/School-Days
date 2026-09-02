@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private float dashCooldownTimer = 0f;
     private float dashTimer = 0f;
     public MainCamera Camera;
+    public Dialogos dialogos;
 
     void Start()
     {
@@ -68,6 +69,7 @@ public class Player : MonoBehaviour
         }
 
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("FrenteDaEscola"))
@@ -86,7 +88,31 @@ public class Player : MonoBehaviour
         {
             Camera.posicaoCamera("galpao");
         }
+
+        if (collision.gameObject.CompareTag("Npc1"))
+        {
+            dialogos.ColidindoNpc = 1;
+        }
+        else if (collision.gameObject.CompareTag("Npc2"))
+        {
+            dialogos.ColidindoNpc = 2;
+        }
+        else if (collision.gameObject.CompareTag("Npc3"))
+        {
+            dialogos.ColidindoNpc = 3;
+        }
+        else if (collision.gameObject.CompareTag("Npc4"))
+        {
+            dialogos.ColidindoNpc = 4;
+        }
     }
 
-
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Npc1") || collision.gameObject.CompareTag("Npc2") || collision.gameObject.CompareTag("Npc3") || collision.gameObject.CompareTag("Npc4"))
+        {
+            dialogos.ColidindoNpc = 0;
+        }
+    }
+    
 }

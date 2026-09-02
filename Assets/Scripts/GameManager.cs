@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
     private Player player;
     public TextMeshProUGUI text;
     public GameObject CaixaDeTexto;
-    public Dialogos dialogoNPC3;
-    Dialogos dialogos;
+    public Dialogos dialogos;
 
     public void Start()
     {
@@ -18,28 +17,6 @@ public class GameManager : MonoBehaviour
         CaixaDeTexto.SetActive(false);
     }
 
-    public void Update()
-    {
-        
-    if (dialogoNPC3.playerInRangeNpc3)
-    {
-        Debug.Log("Player is in range of NPC3");
-        if (Input.GetKey(KeyCode.C))
-        {
-            player.transform.position = new Vector3(36, 17, 0);
-            player.speed = 5f;
-            text.gameObject.SetActive(false);
-            CaixaDeTexto.SetActive(false);
-        }
-    }
-    if (Input.GetKey(KeyCode.Q))
-        {
-            text.gameObject.SetActive(false);
-            CaixaDeTexto.SetActive(false);
-            player.speed = 5f;
-        }
-
-    }
     public void dialogo(string texto)
     {
         player.speed = 0f;
@@ -47,4 +24,37 @@ public class GameManager : MonoBehaviour
         CaixaDeTexto.SetActive(true);
         text.text = texto;
     }
+//
+    public void Dialogo1()
+    {
+        Debug.Log("Dialogo 1");
+        if (dialogos.ColidindoNpc == 1)
+        {
+            player.speed = 5f;
+            CaixaDeTexto.SetActive(false);
+        }
+        else if (dialogos.ColidindoNpc == 2)
+        {
+            player.speed = 5f;
+            CaixaDeTexto.SetActive(false);
+        }
+        else if (dialogos.ColidindoNpc == 3)
+        {
+            player.transform.position = new Vector3(36, 17, 0);
+            player.speed = 5f;
+            CaixaDeTexto.SetActive(false);
+        }
+        else if (dialogos.ColidindoNpc == 4)
+        {
+            player.speed = 5f;
+            CaixaDeTexto.SetActive(false);
+        }
+    }
+
+    public void Dialogo2()
+    {
+        CaixaDeTexto.SetActive(false);
+        player.speed = 5f;
+    }
+
 }
