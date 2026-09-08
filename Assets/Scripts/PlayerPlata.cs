@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerPlata : MonoBehaviour
 {
     public float speed = 5f;
-    public float jumpForce = 15f;
+    public float jumpForce = 100f;
     public bool canJump = true;
     private bool dash = true;
     private float dashDuration = 0.1f;
@@ -22,17 +22,20 @@ public class PlayerPlata : MonoBehaviour
         {
             rb.velocity = new Vector2(movement * speed, rb.velocity.y);
         }
+        else
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
         if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce * 1.6f);
             canJump = false;
         }
-        if  (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0)
+        else if (Input.GetKeyUp(KeyCode.Space) && rb.velocity.y > 0)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 1.5f);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
         
-
         if (dash == false)
         {
             
@@ -49,6 +52,10 @@ public class PlayerPlata : MonoBehaviour
     public void FixedUpdate()
     {
         Dash();
+        float Xlimite = Mathf.Clamp(rb.position.x, -10f, 10f);
+        Vector3 limite = transform.position;
+        limite.x = Xlimite;
+        transform.position = limite;
     }
 
     public void Dash()
@@ -80,6 +87,13 @@ public class PlayerPlata : MonoBehaviour
         {
             canJump = true;
 
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            canJump = false;
         }
     }
 }
