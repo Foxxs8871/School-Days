@@ -22,10 +22,6 @@ public class Player : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
         Vector2 movement = new Vector2(horizontal, vertical).normalized;
-        // if (horizontal != 0 && vertical != 0)
-        // {
-        //     movement = new Vector2(horizontal, vertical).normalized;
-        // }
         transform.Translate(movement * speed * Time.deltaTime);
 
         if (dash == false)
@@ -45,7 +41,7 @@ public class Player : MonoBehaviour
     {
         Dash();
     }
-
+// Resolver o bug onde o player se mover quando deveria estar parado, como quando o celular está aberto.
     public void Dash()
     {
         if (dash == true)
