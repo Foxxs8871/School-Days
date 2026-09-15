@@ -52,7 +52,7 @@ public class PlayerPlata : MonoBehaviour
     public void FixedUpdate()
     {
         Dash();
-        float Xlimite = Mathf.Clamp(rb.position.x, -10f, 10f);
+        float Xlimite = Mathf.Clamp(rb.position.x, -10.30f, 10.30f);
         Vector3 limite = transform.position;
         limite.x = Xlimite;
         transform.position = limite;
