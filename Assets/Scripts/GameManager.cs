@@ -24,8 +24,8 @@ public class GameManager : MonoBehaviour
         CaixaDeTexto.SetActive(true);
         text.text = texto;
     }
-//
-    public void Dialogo1()
+   
+    public void DialogoOpcao1() //botão opção 1
     {
         Debug.Log("Dialogo 1");
         if (dialogos.ColidindoNpc == 1)
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Dialogo2()
+    public void DialogoOpcao2() //botão opção 2
     {
         CaixaDeTexto.SetActive(false);
         player.speed = 5f;
