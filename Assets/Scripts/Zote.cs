@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class Zote : MonoBehaviour
 {
-    private float velocidade = 0.0f;
+    public float velocidade = 0.05f;
     private Transform playerpos;
     public GameObject bolaPrefab;
 
     void Start()
     {
         playerpos = FindAnyObjectByType<Player>().transform;
-        CriarBola();
     }
 
     void FixedUpdate()
@@ -19,9 +18,9 @@ public class Zote : MonoBehaviour
         Follow();
     }
 
-    public void Follow()
+    public void Follow(int parar = 1)
     {
-        gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, playerpos.position, velocidade);
+        gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, playerpos.position, velocidade * parar);
     }
 
     public void CriarBola()
