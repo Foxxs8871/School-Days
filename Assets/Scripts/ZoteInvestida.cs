@@ -5,21 +5,26 @@ using UnityEngine;
 public class ZoteInvestida : MonoBehaviour
 {
     public Transform playerpos;
-    public Vector2 direcao;
     public Rigidbody2D rb;
     public Zote zote;
+    public Vector3 direcao;
 
-    public void Investida()
+    public void Awake()
     {
         playerpos = FindAnyObjectByType<Player>().transform;
+    }
+    
+    public void Investida()
+    {
         direcao = (playerpos.transform.position - transform.position).normalized;
         StartCoroutine(InvestidaCoroutine());
     }
     IEnumerator InvestidaCoroutine()
     {
-        zote.Follow(0);
-        rb.velocity = direcao * 3f;
+        float velocidade = zote.velocidade;
+        zote.velocidade = zote.velocidade * 3f;
         yield return new WaitForSeconds(1f);
-        zote.Follow(1);
+        zote.velocidade = velocidade;
+        
     }
 }

@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Zote : MonoBehaviour
 {
-    public float velocidade = 0.05f;
-    private Transform playerpos;
+    public float velocidade = 2f;
+    public Transform playerpos;
     public GameObject bolaPrefab;
+    public Rigidbody2D rb;
 
-    void Start()
+    void Awake()
     {
+        rb = GetComponent<Rigidbody2D>();
         playerpos = FindAnyObjectByType<Player>().transform;
     }
 
@@ -20,7 +22,9 @@ public class Zote : MonoBehaviour
 
     public void Follow(int parar = 1)
     {
-        gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, playerpos.position, velocidade * parar);
+        Vector3 direcao = (playerpos.position - transform.position).normalized;
+        rb.velocity = direcao * velocidade * parar;
+        //gameObject.transform.position = Vector2.MoveTowards(gameObject.transform.position, playerpos.position, velocidade * parar);
     }
 
     public void CriarBola()
